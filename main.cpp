@@ -19,38 +19,9 @@ bool operator==(const Point& P3, const Point& P2)
 
 int main()
 {
-    /*
-
-    std::fstream file;
-    file.open("data.txt", std::fstream::in);
-
-    if (!file.is_open())
-    {	// jeœli nie ma podanego pliku
-        std::cout << " File error. " << std::endl;
-        return 1; // zakoñczenie pracy programu
-    }
-    
-    const int rows = 6;
-
-    const int columns = 2;
-
-    float data[rows][columns];
-
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            file >> data[i][j];
-          
-            if (file.eof()) break;
-        }
-
-        if (file.eof()) break;
-    }
-
-        file.close();
-        */
+   
     std::vector<Point> list_of_points;
+
     Point p1(1, 12, 0, false);
     list_of_points.push_back(p1);
 
@@ -69,13 +40,13 @@ int main()
     Point p6(4, 9, 3, false);
     list_of_points.push_back(p6);
 
-    Neighbours Hamiltonian_cycle;
+    Neighbours coordinates;
 
-    Hamiltonian_cycle.find_cycle(list_of_points);
+    coordinates.find_cycle(list_of_points);
 
-    std::cout << "The shortest possible route is: " << Hamiltonian_cycle.get_total_distance() << std::endl;
+    std::cout << "The shortest possible route length is: " << coordinates.get_the_shortest_route() << std::endl;
 
-    std::cout << "The best point to start is: " << Hamiltonian_cycle.get_best_starting_point().get_x() << std::endl;
+    std::cout << "The best starting point coordinates are: x: " << coordinates.get_best_starting_point().get_x() << " y: "<< coordinates.get_best_starting_point().get_y() << "z: " << coordinates.get_best_starting_point().get_z() << std::endl;
 
     return 0;
 }

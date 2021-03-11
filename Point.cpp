@@ -39,6 +39,11 @@ Point& Point::operator=(const Point& P3)
     return *this;
 }
 
+bool Point::operator== (const Point& rhs)
+{
+    return x == rhs.x && y == rhs.y && z == rhs.z;
+}
+
 void Point::set_x(int x_)
 {
     x = x_;

@@ -14,6 +14,8 @@ public:
 
     Point& operator=(const Point& P3);
 
+    bool operator== (const Point& rhs);
+
     void set_x(int x_);
 
     int get_x() const;
