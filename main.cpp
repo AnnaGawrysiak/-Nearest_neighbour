@@ -7,20 +7,12 @@
 #include "Point.h"
 #include "Neighbours.h"
 
-bool operator==(const Point& P3, const Point& P2)
-{
-    if (P2.get_x() == P3.get_x() && P2.get_y() == P3.get_y() && P2.get_z() == P3.get_z() && P2.get_already_visited() == P3.get_already_visited())
-        return true;
-
-    else
-        return false;
-}
-
-
 int main()
 {
-   
+  
     std::vector<Point> list_of_points;
+
+    list_of_points.resize(6);
 
     Point p1(1, 12, 0, false);
     list_of_points.push_back(p1);
