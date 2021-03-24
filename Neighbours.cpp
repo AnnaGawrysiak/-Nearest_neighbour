@@ -55,12 +55,22 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 
 	for (unsigned int i = 0; i < list_of_points.size(); i++)
 	{
+		list_of_points.at(i).set_already_visited(false);
+	}
+
+	for (unsigned int i = 0; i < list_of_points.size(); i++)
+	{
 		//std::cout << "point" << &point << std::endl;
 		point->set_already_visited(true);
+		std::cout << "current peak: " << point->get_x() << " y: " << point->get_y() << std::endl;
 		Point* current_peak = find_neighbour(point);
-		//std::cout << "current peak" << &current_peak << std::endl;
-		distance += calculate_distance(current_peak, point);
-		//std::cout << "distance: " << distance << std::endl;
+		
+		if (current_peak == point)
+			distance += calculate_distance(current_peak, &list_of_points.at(cycle));
+		else
+			distance += calculate_distance(current_peak, point);
+		
+		std::cout << "distance: " << distance << std::endl;
 		point = current_peak;
 		//std::cout << "point end" << &point << std::endl;
 	}

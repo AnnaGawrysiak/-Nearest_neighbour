@@ -47,17 +47,14 @@ bool Test::Test2()
 	points.push_back(first);
 	points.push_back(second);
 	points.push_back(third);
-	std::cout << "index 3: " << &points.at(3) << std::endl;
 	
 	Point* current_point = &zero;
 
 	Neighbours tester(points);
 	Point* result = tester.find_neighbour(current_point);
-	std::cout << "result" << result << std::endl;
 	Point* expected_result = &points.at(3);
-	std::cout << "expected_result" << expected_result << std::endl;
-
-	if (result == expected_result)
+	
+	if (*result == *expected_result)
 		return true;
 
 	return false;

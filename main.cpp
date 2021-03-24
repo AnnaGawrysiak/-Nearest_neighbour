@@ -11,11 +11,12 @@
 int main()
 {
     Test* testowa =Test::get_instance();
-    testowa->run(); // testy maja sie same tworzyc, sprawdzac i wyczyscic. jest enkapsulacja.
+    testowa->run(); 
   
     std::vector<Point> points;
 
-    Point p1(1, 12, 0, false);
+    /*
+     Point p1(1, 12, 0, false);
     points.push_back(p1);
 
     Point p2(2, 5, 0, false);
@@ -32,6 +33,19 @@ int main()
 
     Point p6(4, 9, 3, false);
     points.push_back(p6);
+    */
+
+    Point p1(0, 2, 0, false);
+    points.push_back(p1);
+
+    Point p2(0, 3, 0, false);
+    points.push_back(p2);
+
+    Point p3(0, 7, 0, false);
+    points.push_back(p3);
+
+    Point p4(0, 0, 0, false);
+    points.push_back(p4);
 
     Neighbours coordinates(points);
 
