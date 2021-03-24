@@ -12,7 +12,7 @@ public:
 	Neighbours();
 	Neighbours(std::vector<Point>& list_of_points);
 	Point* find_neighbour(Point* current_point);
-	float caclulate_distance(Point* first, Point* second);
+	float calculate_distance(Point* first, Point* second);
 	void find_cycle();
 	float get_the_shortest_route();
 	Point get_best_starting_point() const; 

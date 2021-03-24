@@ -6,9 +6,12 @@
 #include <cstdlib>
 #include "Point.h"
 #include "Neighbours.h"
+#include "Test.h"
 
 int main()
 {
+    Test* testowa =Test::get_instance();
+    testowa->run(); // testy maja sie same tworzyc, sprawdzac i wyczyscic. jest enkapsulacja.
   
     std::vector<Point> points;
 

@@ -13,7 +13,7 @@ Neighbours::Neighbours(std::vector<Point>& list_of_points_)
 	the_shortest_route = std::numeric_limits<float>::max();
 }
 
-float Neighbours::caclulate_distance(Point* first, Point* second)
+float Neighbours::calculate_distance(Point* first, Point* second)
 {
 	float distance = sqrt((first->get_x() - second->get_x()) * (first->get_x() - second->get_x()) + (first->get_y() - second->get_y()) * (first->get_y() - second->get_y()) + (first->get_z() - second->get_z()) * (first->get_z() - second->get_z()));
 	
@@ -30,7 +30,7 @@ Point* Neighbours::find_neighbour(Point* current_point)
 	{
 		if (list_of_points.at(i).get_already_visited() == false)
 		{
-			float distance = caclulate_distance(current_point, &list_of_points.at(i));
+			float distance = calculate_distance(current_point, &list_of_points.at(i));
 
 			if (distance < the_smallest_distance)
 			{
@@ -59,7 +59,7 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 		point->set_already_visited(true);
 		Point* current_peak = find_neighbour(point);
 		//std::cout << "current peak" << &current_peak << std::endl;
-		distance += caclulate_distance(current_peak, point);
+		distance += calculate_distance(current_peak, point);
 		//std::cout << "distance: " << distance << std::endl;
 		point = current_peak;
 		//std::cout << "point end" << &point << std::endl;
