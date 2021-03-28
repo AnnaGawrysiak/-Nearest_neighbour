@@ -45,7 +45,7 @@ Point* Neighbours::find_neighbour(Point* current_point)
 }
 
 
-void Neighbours::find_cycle() // gives you starting point for the shortest route
+void Neighbours::find_cycle() // calculates starting point for the shortest route
 {
 	static unsigned int cycle = 0;
 
@@ -60,9 +60,7 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 
 	for (unsigned int i = 0; i < list_of_points.size(); i++)
 	{
-		//std::cout << "point" << &point << std::endl;
 		point->set_already_visited(true);
-		std::cout << "current peak: " << point->get_x() << " y: " << point->get_y() << std::endl;
 		Point* current_peak = find_neighbour(point);
 		
 		if (current_peak == point)
@@ -70,9 +68,8 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 		else
 			distance += calculate_distance(current_peak, point);
 		
-		std::cout << "distance: " << distance << std::endl;
 		point = current_peak;
-		//std::cout << "point end" << &point << std::endl;
+
 	}
 	std::cout <<std::endl;
 
@@ -82,7 +79,6 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 		best_starting_point = list_of_points.at(cycle);
 	}
 
-	//std::cout << " the_shortest_route after: " << the_shortest_route << std::endl;
 
 	cycle++;
 
@@ -90,43 +86,6 @@ void Neighbours::find_cycle() // gives you starting point for the shortest route
 		return;
 
 	return find_cycle();
-
-	/*
-	cycle++;
-
-	if (cycle >= list_of_points.size())
-		return;
-
-	return find_cycle();
-
-	/*
-	static unsigned int cycle = 0;
-
-	Point* peak = &list_of_points.at(cycle);
-
-	float distance = 0;
-
-	for (unsigned int i = 0; i < list_of_points.size(); i++)
-	{
-		peak->set_already_visited(true);
-		Point* current_peak = find_neighbour(peak);
-		distance += caclulate_distance(current_peak, peak);
-		peak = current_peak;
-	}
-
-	if (distance < the_shortest_route)
-	{
-		the_shortest_route = distance;
-		best_starting_point = list_of_points.at(cycle);
-	}
-
-	cycle++;
-
-	if (cycle >= list_of_points.size())
-		return;
-	
-	return find_cycle();
-	*/
 }
 
 	

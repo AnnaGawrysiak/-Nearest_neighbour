@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <ctime>
@@ -12,40 +13,42 @@ int main()
 {
     Test* testowa =Test::get_instance();
     testowa->run(); 
-  
+
+    std::vector<Point> numbers;
+
+    std::string filename = "data.txt";
+    std::ifstream file;
+    file.open(filename);
+
+    if (!file.is_open())
+        return 1;
+
+    int x = 0;
+    int y = 0;
+    int z = 0;
+
+    std::string line;
+    std::string myString;
+
     std::vector<Point> points;
 
-    /*
-     Point p1(1, 12, 0, false);
-    points.push_back(p1);
+   while (getline(file, line))
+    {
+       std::stringstream ss(line);
+       getline(ss, myString, ',');
+       x = std::stoi(myString);
+       getline(ss, myString, ',');
+       y = std::stoi(myString);
+       getline(ss, myString);
+       z = std::stoi(myString); 
+    
+       std::cout << x << " " << y << " " << z << " " << std::endl;
+       Point p1(x, y, z, false);
 
-    Point p2(2, 5, 0, false);
-    points.push_back(p2);
+       points.push_back(p1);
+    }
 
-    Point p3(5, 3, 1, false);
-    points.push_back(p3);
-
-    Point p4(3, 2, 1, false);
-   points.push_back(p4);
-
-    Point p5(3, 6, 2, false);
-    points.push_back(p5);
-
-    Point p6(4, 9, 3, false);
-    points.push_back(p6);
-    */
-
-    Point p1(0, 2, 0, false);
-    points.push_back(p1);
-
-    Point p2(0, 3, 0, false);
-    points.push_back(p2);
-
-    Point p3(0, 7, 0, false);
-    points.push_back(p3);
-
-    Point p4(0, 0, 0, false);
-    points.push_back(p4);
+    file.close();
 
     Neighbours coordinates(points);
 
